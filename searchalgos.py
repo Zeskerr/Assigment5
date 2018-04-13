@@ -30,10 +30,11 @@ def measureTime(algorithm, list):
     times = []
     for _ in range(10):
         start = timer()
-        algorithm(list, random.randint(0, len(list)*2))
+        algorithm(list, random.sample(range(len(list)*2), 1)[0])
         end = timer()
-        times.append((end-start)*1000)
-    return (sum(times)/len(times))
+        time = (end - start) * 1000
+        times.append(time)
+    return(sum(times)/len(times))
 
 #generating random lists
 #random.sample(x, n) will generate a list of random values from 0 to x without replacement of length n
@@ -46,22 +47,22 @@ list1mil = random.sample(range(2000000), 1000000)
 list10mil = random.sample(range(20000000), 10000000)
 
 #average time values for linear search for lists of length from 10 to 10 million by increments of 10
-linearSearch10Average = measureTime(linearSearch, list10)
-linearSearch100Average = measureTime(linearSearch, list100)
-linearSearch1kAverage = measureTime(linearSearch, list1k)
-linearSearch10kAverage = measureTime(linearSearch, list10k)
-linearSearch100kAverage = measureTime(linearSearch, list100k)
-linearSearch1milAverage = measureTime(linearSearch, list1mil)
-linearSearch10milAverage = measureTime(linearSearch, list10mil)
+linearSearch10 = measureTime(linearSearch, list10)
+linearSearch100 = measureTime(linearSearch, list100)
+linearSearch1k = measureTime(linearSearch, list1k)
+linearSearch10k = measureTime(linearSearch, list10k)
+linearSearch100k = measureTime(linearSearch, list100k)
+linearSearch1mil = measureTime(linearSearch, list1mil)
+linearSearch10mil = measureTime(linearSearch, list10mil)
 
 linearSearchTimes = [
-    linearSearch10Average,
-    linearSearch100Average,
-    linearSearch1kAverage,
-    linearSearch10kAverage,
-    linearSearch100kAverage,
-    linearSearch1milAverage,
-    linearSearch10milAverage
+    linearSearch10,
+    linearSearch100,
+    linearSearch1k,
+    linearSearch10k,
+    linearSearch100k,
+    linearSearch1mil,
+    linearSearch10mil
 ]
 
 #sorting previously generated lists in increasing order for binary search
@@ -74,28 +75,28 @@ list1mil.sort()
 list10mil.sort()
 
 #average time values for binary search
-binarySearch10Average = measureTime(binarySearch, list10)
-binarySearch100Average = measureTime(binarySearch, list100)
-binarySearch1kAverage = measureTime(binarySearch, list1k)
-binarySearch10kAverage = measureTime(binarySearch, list10k)
-binarySearch100kAverage = measureTime(binarySearch, list100k)
-binarySearch1milAverge = measureTime(binarySearch, list1mil)
-binarySearch10milAverge = measureTime(binarySearch, list10mil)
+binarySearch10 = measureTime(binarySearch, list10)
+binarySearch100 = measureTime(binarySearch, list100)
+binarySearch1k = measureTime(binarySearch, list1k)
+binarySearch10k = measureTime(binarySearch, list10k)
+binarySearch100k = measureTime(binarySearch, list100k)
+binarySearch1mil = measureTime(binarySearch, list1mil)
+binarySearch10mil = measureTime(binarySearch, list10mil)
 
 binarySearchTimes = [
-    binarySearch10Average,
-    binarySearch100Average,
-    binarySearch1kAverage,
-    binarySearch10kAverage,
-    binarySearch100kAverage,
-    binarySearch1milAverge,
-    binarySearch10milAverge
+    binarySearch10,
+    binarySearch100,
+    binarySearch1k,
+    binarySearch10k,
+    binarySearch100k,
+    binarySearch1mil,
+    binarySearch10mil
 ]
 
 for i in range(len(linearSearchTimes)):
-    print('The average time for linear search is {0}ms'.format(linearSearchTimes[i]))
+    print('The execution times for linear search is {0}ms'.format(linearSearchTimes[i]))
 for i in range(len(binarySearchTimes)):
-    print('The average time for binary search is {0}ms'.format(binarySearchTimes[i]))
+    print('The execution times time for binary search is {0}ms'.format(binarySearchTimes[i]))
 
 #text representation of list sizes
 sizes = ['10', '100', '1000', '10^4', '10^5', '10^6', '10^7']
