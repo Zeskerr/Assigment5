@@ -21,7 +21,6 @@ def binarySearch(arr, num):
         elif(arr[middle] < num):
             start = middle + 1
         else:
-            print('Number {0} was found in position {1}'.format(num, middle))
             return
     return
 
